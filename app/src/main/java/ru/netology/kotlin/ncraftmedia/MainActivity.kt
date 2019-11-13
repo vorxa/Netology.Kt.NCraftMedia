@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.netology.kotlin.ncraftmedia.dto.Post
+import ru.netology.kotlin.ncraftmedia.utils.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,22 +13,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val currentTime: Long = System.currentTimeMillis()/1000
         val post = Post(
             1,
-            "Иван Иваныч",
-            "Первый пост",
-            "12 ноября 2019"
+            "Сан Саныч",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            currentTime - 17
         )
 
-        dateTextView.text = post.created
+        dateTextView.text = humanizeTime(currentTime - post.created)
         authorTextView.text = post.author
         contentTextView.text = post.content
-        post.likedByMe = true
+        post.likedByMe = false
         post.commentedByMe = false
-        post.sharedByMe = false
+        post.sharedByMe = true
         post.likes = 5
         post.comments = 0
         post.shares = 1
+
 
 
         if (post.likes > 0) {

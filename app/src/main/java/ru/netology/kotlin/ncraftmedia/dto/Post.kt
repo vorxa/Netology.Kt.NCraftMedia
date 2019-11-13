@@ -4,7 +4,7 @@ class Post (
     val id: Long,
     val author: String,
     val content: String,
-    val created: String,
+    val created: Long = System.currentTimeMillis()/1000,
     var likedByMe: Boolean = false,
     var commentedByMe: Boolean = false,
     var sharedByMe: Boolean = false,
