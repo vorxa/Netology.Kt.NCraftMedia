@@ -5,7 +5,12 @@ class Post (
     val author: String,
     val content: String,
     val created: String,
-    var likedByMe: Boolean = false
+    var likedByMe: Boolean = false,
+    var commentedByMe: Boolean = false,
+    var sharedByMe: Boolean = false,
+    var likes: Int = 0,
+    var comments: Int = 0,
+    var shares: Int = 0
 
 ) {
 
