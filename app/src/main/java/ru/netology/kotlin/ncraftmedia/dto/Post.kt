@@ -1,6 +1,6 @@
 package ru.netology.kotlin.ncraftmedia.dto
 
-class Post (
+data class Post (
     val id: Long,
     val author: String,
     val content: String,

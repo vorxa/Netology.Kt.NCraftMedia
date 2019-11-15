@@ -73,7 +73,7 @@ fun humanizeTime(seconds: Long): String {
     return "$amount $humanize назад"
 }
 
-fun ending (amount: Long, unit: TimeUnits) : String {
+private fun ending (amount: Long, unit: TimeUnits) : String {
     var decs: Long = 0L
     var endings = emptyList<String>()
     var humanize: String = ""
@@ -95,7 +95,7 @@ fun ending (amount: Long, unit: TimeUnits) : String {
     return humanize
 }
 
-enum class TimeUnits {
+private enum class TimeUnits {
     MINUTE,
     HOUR,
     DAY,

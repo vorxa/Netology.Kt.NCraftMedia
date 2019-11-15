@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
             1,
             "Сан Саныч",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            currentTime - 17
+            currentTime - 700
         )
 
         dateTextView.text = humanizeTime(currentTime - post.created)
