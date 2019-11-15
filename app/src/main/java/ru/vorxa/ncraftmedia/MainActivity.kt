@@ -1,11 +1,11 @@
-package ru.netology.kotlin.ncraftmedia
+package ru.vorxa.ncraftmedia
 
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
-import ru.netology.kotlin.ncraftmedia.dto.Post
-import ru.netology.kotlin.ncraftmedia.utils.*
+import ru.vorxa.ncraftmedia.dto.Post
+import ru.vorxa.ncraftmedia.utils.*
 
 class MainActivity : AppCompatActivity() {
 

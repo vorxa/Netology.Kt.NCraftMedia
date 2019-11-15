@@ -1,4 +1,4 @@
-package ru.netology.kotlin.ncraftmedia.dto
+package ru.vorxa.ncraftmedia.dto
 
 data class Post (
     val id: Long,

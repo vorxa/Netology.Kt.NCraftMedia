@@ -1,4 +1,4 @@
-package ru.netology.kotlin.ncraftmedia
+package ru.vorxa.ncraftmedia
 
 import org.junit.Test
 

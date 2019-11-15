@@ -1,4 +1,4 @@
-package ru.netology.kotlin.ncraftmedia.utils
+package ru.vorxa.ncraftmedia.utils
 
 fun humanizeTime(seconds: Long): String {
     /*
