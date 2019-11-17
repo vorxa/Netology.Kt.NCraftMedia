@@ -14,24 +14,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val currentTime: Long = System.currentTimeMillis()/1000
-        val post = Post(
+        val post1 = Post(
             1,
             "Сан Саныч",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            currentTime - 700
+            currentTime - 700,
+            false,
+            false,
+            true,
+            5,
+            0,
+            1
         )
+
+        val post = post1.copy(author = "Кот Матроскин", likedByMe = true)
 
         dateTextView.text = humanizeTime(currentTime - post.created)
         authorTextView.text = post.author
         contentTextView.text = post.content
-        post.likedByMe = false
-        post.commentedByMe = false
-        post.sharedByMe = true
-        post.likes = 5
-        post.comments = 0
-        post.shares = 1
-
-
 
         if (post.likes > 0) {
             likesTextView.text = post.likes.toString()

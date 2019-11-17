@@ -5,12 +5,12 @@ data class Post (
     val author: String,
     val content: String,
     val created: Long = System.currentTimeMillis()/1000,
-    var likedByMe: Boolean = false,
-    var commentedByMe: Boolean = false,
-    var sharedByMe: Boolean = false,
-    var likes: Int = 0,
-    var comments: Int = 0,
-    var shares: Int = 0
+    val likedByMe: Boolean = false,
+    val commentedByMe: Boolean = false,
+    val sharedByMe: Boolean = false,
+    val likes: Int = 0,
+    val comments: Int = 0,
+    val shares: Int = 0
 
 ) {
 
