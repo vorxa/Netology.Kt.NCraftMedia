@@ -15,6 +15,7 @@ import ru.vorxa.ncraftmedia.utils.*
 
 class MainActivity : AppCompatActivity() {
 
+    // homework_4
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
