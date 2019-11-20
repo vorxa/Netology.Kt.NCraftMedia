@@ -5,6 +5,7 @@ data class Post (
     val author: String,
     val content: String,
     val created: Long = System.currentTimeMillis()/1000,
+    // следующие параметры могут изменяться, в процессе взаимодействия
     var likedByMe: Boolean = false,
     var commentedByMe: Boolean = false,
     var sharedByMe: Boolean = false,
