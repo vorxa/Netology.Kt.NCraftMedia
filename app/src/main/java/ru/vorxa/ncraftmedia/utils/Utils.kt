@@ -124,57 +124,49 @@ fun setButtons(byMe: Boolean, count: Int, textView: TextView, buttonView: ImageB
 fun postsList(): List<Post> {
     val currentTime: Long = System.currentTimeMillis()/1000
     val postEvent = Post(
-        1,
+        3,
         "Почтальон Печкин",
         "The old post office in Ny-Ålesund is not in official use anymore, but it is open and visitors are free to walk in.",
-        currentTime - 7000,
+        currentTime - 2000,
         type = PostType.EVENT,
         address = "Ny-Ålesund Post Office",
-        location = 78.9237826 to 11.9079864
+        location = 78.9237826 to 11.9079864,
+        likes = 36,
+        comments = 12,
+        shares = 3,
+        likedByMe = true,
+        commentedByMe = true
     )
     val postPost = Post(
-        2,
+        1,
         "Дядя Фёдор",
         "Я ничей. Я сам по себе мальчик. Свой собственный. Я из города приехал.",
-        currentTime - 6000,
+        currentTime - 10000,
         type = PostType.POST,
         likedByMe = true,
         commentedByMe = false,
-        sharedByMe = false,
-        likes = 1,
-        comments = 0,
-        shares = 0
+        sharedByMe = true,
+        likes = 111,
+        comments = 27,
+        shares = 61
     )
+
 
     val listOfPosts = listOf(
-        postEvent,
         postPost,
-        Post(3, "Кот Матроскин", "Lorde - Yellow Flicker Beat (cover by Sershen&Zaritskaya)",
-            currentTime - 5000,
+        Post(2, "Шарик", "Здравствуйте. Возьмите меня к себе жить. Я вам буду все охранять.",
+            currentTime - 6000, source = postPost, type = PostType.REPOST,
+            likedByMe = false, commentedByMe = false, sharedByMe = false, likes = 11, comments = 7, shares = 0),
+        postEvent,
+        Post(4, "Мама", "Как мне все это надоело. Наша квартира мне телевизионнную передачу напоминает. \"Что-где-когда\" называется.",
+            currentTime - 1000, type = PostType.AD, adLink = "https://netology.ru/programs/profession-product",
+            likedByMe = true, commentedByMe = false, sharedByMe = true, likes = 38, comments = 2, shares = 1),
+        Post(5, "Кот Матроскин", "Lorde - Yellow Flicker Beat (cover by Sershen&Zaritskaya)",
+            currentTime - 600,
             type = PostType.VIDEO,
-            videoLink = "https://www.youtube.com/watch?v=3Bg_bj8pI5c"),
-        Post(4, "Шарик", "Здравствуйте. Возьмите меня к себе жить. Я вам буду все охранять.",
-            currentTime - 4000, source = postPost, type = PostType.REPOST),
-        Post(5, "Мама", "Как мне все это надоело. Наша квартира мне телевизионнную передачу напоминает. \"Что-где-когда\" называется.",
-            currentTime - 4000, type = PostType.AD)
+            videoLink = "https://www.youtube.com/watch?v=3Bg_bj8pI5c",
+            likedByMe = true, commentedByMe = true, sharedByMe = true, likes = 98, comments = 123, shares = 12)
     )
 
-    val listTest = listOf(
-        Post(
-            2,
-            "Дядя Фёдор",
-            "Я ничей. Я сам по себе мальчик. Свой собственный. Я из города приехал.",
-            currentTime - 6000,
-            type = PostType.POST,
-            likedByMe = true,
-            commentedByMe = true,
-            sharedByMe = false,
-            likes = 10,
-            comments = 5,
-            shares = 0
-        )
-    )
-
-    //return(listOfPosts)
-    return(listTest)
+    return(listOfPosts)
 }

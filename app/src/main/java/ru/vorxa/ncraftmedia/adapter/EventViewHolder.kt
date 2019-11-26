@@ -2,16 +2,17 @@ package ru.vorxa.ncraftmedia.adapter
 
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.view.View
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import ru.vorxa.ncraftmedia.R
 import ru.vorxa.ncraftmedia.dto.Post
-import kotlinx.android.synthetic.main.post_post_card.view.*
-//import kotlinx.android.synthetic.main.post_repost_card.view.*
+import kotlinx.android.synthetic.main.post_event_card.view.*
 import ru.vorxa.ncraftmedia.dto.PostType
 import ru.vorxa.ncraftmedia.utils.humanizeTime
 
-class PostViewHolder(adapter: PostAdapter, view: View): BaseViewHolder(adapter, view) {
+class EventViewHolder(adapter: PostAdapter, view: View): BaseViewHolder(adapter, view) {
     init {
         with(itemView) {
             likeButton.setOnClickListener {
@@ -49,6 +50,15 @@ class PostViewHolder(adapter: PostAdapter, view: View): BaseViewHolder(adapter, 
                         itemView.context.startActivity(intent)
                         item.shares += 1
                     } else { item.shares -= 1 }
+                    adapter.notifyItemChanged(adapterPosition)
+                }
+            }
+            geoButton.setOnClickListener {
+                if (adapterPosition != RecyclerView.NO_POSITION) {
+                    val item = adapter.list[adapterPosition]
+                    val location = Uri.parse("geo:${item.location?.first},${item.location?.second}")
+                    val intent = Intent(Intent.ACTION_VIEW).apply { data = location }
+                    itemView.context.startActivity(intent)
                     adapter.notifyItemChanged(adapterPosition)
                 }
             }

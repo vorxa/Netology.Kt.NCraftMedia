@@ -6,10 +6,14 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import ru.vorxa.ncraftmedia.R
 import ru.vorxa.ncraftmedia.dto.Post
-import kotlinx.android.synthetic.main.post_post_card.view.*
+import kotlinx.android.synthetic.main.post_repost_card.view.*
+import ru.vorxa.ncraftmedia.dto.PostType
 import ru.vorxa.ncraftmedia.utils.humanizeTime
+import java.sql.Date
+import java.sql.Time
+import java.sql.Timestamp
 
-class PostPostViewHolder(adapter: PostAdapter, view: View): BaseViewHolder(adapter, view) {
+class RepostViewHolder(adapter: PostAdapter, view: View): BaseViewHolder(adapter, view) {
     init {
         with(itemView) {
             likeButton.setOnClickListener {
@@ -58,6 +62,15 @@ class PostPostViewHolder(adapter: PostAdapter, view: View): BaseViewHolder(adapt
             dateTextView.text = humanizeTime(System.currentTimeMillis()/1000 - post.created)
             authorTextView.text = post.author
             contentTextView.text = post.content
+            sourceTextView.text = if (post.source != null) {
+                """
+                Отправил ${post.source.author}:
+                ${post.source.content}
+                
+            """.trimIndent()
+            } else {
+                ""
+            }
             likesTextView.text = if (post.likes > 0) post.likes.toString() else ""
             commentsTextView.text = if (post.comments > 0) post.comments.toString() else ""
             sharesTextView.text = if (post.shares > 0) post.shares.toString() else ""

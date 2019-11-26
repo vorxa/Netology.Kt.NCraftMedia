@@ -25,7 +25,7 @@ fun viewTypeToPostType(viewType: Int) = when (viewType) {
 class PostAdapter(val list: List<Post>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         when (viewTypeToPostType(viewType)) {
-            PostType.POST -> PostPostViewHolder(
+            PostType.POST -> PostViewHolder(
                 this,
                 LayoutInflater.from(parent.context).inflate(
                     R.layout.post_post_card,
@@ -33,7 +33,6 @@ class PostAdapter(val list: List<Post>) : RecyclerView.Adapter<RecyclerView.View
                     false
                 )
             )
-/*
             PostType.REPOST -> RepostViewHolder(
                 this,
                 LayoutInflater.from(parent.context).inflate(
@@ -66,7 +65,6 @@ class PostAdapter(val list: List<Post>) : RecyclerView.Adapter<RecyclerView.View
                     false
                 )
             )
-*/
             else -> TODO()
         }
 
