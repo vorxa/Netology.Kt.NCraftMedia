@@ -1,5 +1,12 @@
 package ru.vorxa.ncraftmedia.utils
 
+import android.graphics.Color
+import android.widget.ImageButton
+import android.widget.TextView
+import ru.vorxa.ncraftmedia.R
+import ru.vorxa.ncraftmedia.dto.Post
+import ru.vorxa.ncraftmedia.dto.PostType
+
 fun humanizeTime(seconds: Long): String {
     /*
         0с - 59с "менее минуты назад"
@@ -101,4 +108,73 @@ private enum class TimeUnits {
     DAY,
     MONTH,
     YEAR;
+}
+
+fun setButtons(byMe: Boolean, count: Int, textView: TextView, buttonView: ImageButton, type: String) {
+    textView.text = if (count > 0) count.toString() else ""
+    val image = when(type) {
+        "favorite" -> if (byMe) R.drawable.ic_favorite_red_24dp else R.drawable.ic_favorite_gray_24dp
+        "comment" -> if (byMe) R.drawable.ic_comment_red_24dp else R.drawable.ic_comment_gray_24dp
+        else -> if (byMe) R.drawable.ic_share_red_24dp else R.drawable.ic_share_gray_24dp
+    }
+    buttonView.setImageResource(image)
+    textView.setTextColor(if (byMe) Color.RED else Color.GRAY)
+}
+
+fun postsList(): List<Post> {
+    val currentTime: Long = System.currentTimeMillis()/1000
+    val postEvent = Post(
+        1,
+        "Почтальон Печкин",
+        "The old post office in Ny-Ålesund is not in official use anymore, but it is open and visitors are free to walk in.",
+        currentTime - 7000,
+        type = PostType.EVENT,
+        address = "Ny-Ålesund Post Office",
+        location = 78.9237826 to 11.9079864
+    )
+    val postPost = Post(
+        2,
+        "Дядя Фёдор",
+        "Я ничей. Я сам по себе мальчик. Свой собственный. Я из города приехал.",
+        currentTime - 6000,
+        type = PostType.POST,
+        likedByMe = true,
+        commentedByMe = false,
+        sharedByMe = false,
+        likes = 1,
+        comments = 0,
+        shares = 0
+    )
+
+    val listOfPosts = listOf(
+        postEvent,
+        postPost,
+        Post(3, "Кот Матроскин", "Lorde - Yellow Flicker Beat (cover by Sershen&Zaritskaya)",
+            currentTime - 5000,
+            type = PostType.VIDEO,
+            videoLink = "https://www.youtube.com/watch?v=3Bg_bj8pI5c"),
+        Post(4, "Шарик", "Здравствуйте. Возьмите меня к себе жить. Я вам буду все охранять.",
+            currentTime - 4000, source = postPost, type = PostType.REPOST),
+        Post(5, "Мама", "Как мне все это надоело. Наша квартира мне телевизионнную передачу напоминает. \"Что-где-когда\" называется.",
+            currentTime - 4000, type = PostType.AD)
+    )
+
+    val listTest = listOf(
+        Post(
+            2,
+            "Дядя Фёдор",
+            "Я ничей. Я сам по себе мальчик. Свой собственный. Я из города приехал.",
+            currentTime - 6000,
+            type = PostType.POST,
+            likedByMe = true,
+            commentedByMe = true,
+            sharedByMe = false,
+            likes = 10,
+            comments = 5,
+            shares = 0
+        )
+    )
+
+    //return(listOfPosts)
+    return(listTest)
 }

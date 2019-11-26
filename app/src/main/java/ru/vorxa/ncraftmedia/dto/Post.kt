@@ -11,8 +11,8 @@ data class Post (
     val source: Post? = null,
     val address: String? = null,
     val location: Pair<Double, Double>? = null,
-    val videoLink: URI? = null,
-    val adLink: URI? = null,
+    val videoLink: String? = null,
+    val adLink: String? = null,
     // следующие параметры могут изменяться, в процессе взаимодействия
     var likedByMe: Boolean = false,
     var commentedByMe: Boolean = false,

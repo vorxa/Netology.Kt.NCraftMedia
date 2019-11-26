@@ -11,7 +11,11 @@ import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.vorxa.ncraftmedia.dto.Event
 import ru.vorxa.ncraftmedia.dto.Post
+import ru.vorxa.ncraftmedia.dto.PostType
 import ru.vorxa.ncraftmedia.utils.*
+import androidx.recyclerview.widget.LinearLayoutManager
+import ru.vorxa.ncraftmedia.adapter.PostAdapter
+import java.net.URI
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,22 +24,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val currentTime: Long = System.currentTimeMillis()/1000
-        val post1 = Event(
-            1,
-            "Сан Саныч",
-            "The old post office in Ny-Ålesund is not in official use anymore, but it is open and visitors are free to walk in.",
-            currentTime - 700,
-            "Ny-Ålesund Post Office",
-            78.9237826 to 11.9079864,
-            false,
-            false,
-            true,
-            5,
-            0,
-            1
-        )
+        val postsList = postsList()
 
+        with(container) {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = PostAdapter(postsList)
+        }
+
+    }
+}
+/*
         val post = post1.copy(author = "Кот Матроскин", likedByMe = true)
 
         dateTextView.text = humanizeTime(currentTime - post.created)
@@ -74,7 +72,7 @@ class MainActivity : AppCompatActivity() {
             setButtons(post.sharedByMe, post.shares, sharesTextView, shareButton, "share")
         }
         geoButton.setOnClickListener {
-            val location = Uri.parse("geo:${post.location.first},${post.location.second}")
+            val location = Uri.parse("geo:${post.location?.first},${post.location?.second}")
             val intent = Intent(Intent.ACTION_VIEW).apply { data = location }
             startActivity(intent)
 
@@ -94,3 +92,4 @@ class MainActivity : AppCompatActivity() {
         textView.setTextColor(if (byMe) Color.RED else Color.GRAY)
     }
 }
+*/
