@@ -20,9 +20,9 @@ object Api {
             )
             serializer = GsonSerializer()
         }
-        install(Logging){
-            logger = Logger.SIMPLE
-            level = LogLevel.INFO
-        }
+//        install(Logging){
+//            logger = Logger.SIMPLE
+//            level = LogLevel.INFO
+//        }
     }
 }
